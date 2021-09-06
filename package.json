@@ -1,23 +1,63 @@
 {
-  "name": "miniselfcare",
-  "version": "0.0.1",
+  "name": "microselfcare",
+  "version": "0.0.2",
   "description": "the app that cares about you",
-  "repository": "https://github.com/ricardoinaciopt/miniselfcare",
+  "repository": "https://github.com/ricardoinaciopt/microselfcare",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
   },
   "keywords": [
     "self-care",
     "care",
     "help",
     "health",
-    "minimal"
+    "minimal",
+    "micro"
   ],
   "author": "Ricardo Inácio",
   "license": "MIT",
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.60",
+    "@electron-forge/maker-deb": "^6.0.0-beta.60",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.60",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.60",
+    "@electron-forge/maker-zip": "^6.0.0-beta.60",
     "electron": "^14.0.0"
+  },
+  "dependencies": {
+    "asar": "^3.0.3",
+    "electron-is-dev": "^2.0.0",
+    "electron-squirrel-startup": "^1.0.0",
+    "electron-store": "^8.0.0"
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "microselfcare"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
+    }
   }
 }

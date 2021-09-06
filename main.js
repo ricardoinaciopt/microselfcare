@@ -1,5 +1,7 @@
 const {app, BrowserWindow, ipcMain} = require('electron')
 const path = require('path')
+const isDev = require('electron-is-dev')
+const Store = require('electron-store')
 
 function createWindow () {
   const mainWindow = new BrowserWindow({
@@ -18,11 +20,24 @@ function createWindow () {
       enableRemoteModule: true,
       contextIsolation: false,
       backgroundThrottling: false,
-      devtools: true,
+      nativeWindowOpen: true,
+      devtools: false,
     }
   })
 
-  mainWindow.loadFile('index.html')
+  if(isDev){
+    mainWindow.webContents.openDevTools()
+  }else{
+    mainWindow.removeMenu()
+  }
+
+
+  const store = new Store();
+  if (!store.get('user')) {
+    mainWindow.loadFile("intro.html")
+  } else {
+    mainWindow.loadFile("index.html")
+  }
   mainWindow.once('ready-to-show', () => {
     mainWindow.show()
   })
@@ -45,14 +60,19 @@ function createWindow () {
   })
 
   ipcMain.on('x', () => {
-  mainWindow.close();
-  app.exit();
+    mainWindow.close();
+    app.exit();
+  })
+
+  ipcMain.on('userexists', () => {
+    mainWindow.loadFile('index.html');
   })
 }
 
+
+
 app.whenReady().then(() => {
   createWindow()
-
   app.on('activate', function () {
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
   })
