@@ -33,13 +33,12 @@ function createWindow () {
 
 
   const store = new Store();
-    /*
+
   if (!store.get('user')) {
     mainWindow.loadFile("intro.html")
   } else {
     mainWindow.loadFile("index.html")
   }
-  */
   mainWindow.loadFile("intro2.html")
   mainWindow.once('ready-to-show', () => {
     mainWindow.show()
