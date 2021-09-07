@@ -1,6 +1,6 @@
 {
   "name": "microselfcare",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "the app that cares about you",
   "repository": "https://github.com/ricardoinaciopt/microselfcare",
   "main": "main.js",
@@ -59,6 +59,7 @@
     "@electron-forge/maker-rpm": "^6.0.0-beta.60",
     "@electron-forge/maker-squirrel": "^6.0.0-beta.60",
     "@electron-forge/maker-zip": "^6.0.0-beta.60",
+    "aos": "^2.3.4",
     "electron": "^14.0.0",
     "electron-packager": "^15.3.0"
   },

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="node_modules/aos/dist/aos.css" />
+  <title>microselfcare</title>
+</head>
+<body>
+  <img id="bglogo" src="img/icon.png" alt="">
+  <div id="bar">
+    <img id="x" class="icons" src="img/close.png" />
+    <img id="mini" class="icons" src="img/minimize.png" />
+  </div>
+  <div id="intro-content2">
+    <h1 class="welcome">Hello <span id="un"></span>,</h1>
+    <h2 class="welcome4">Tell me more about you.</h2>
+    <h2 data-aos="fade-right" data-aos-duration="3000" data-aos-delay="3000" class="slider">How do you feel on a daily basis?</h2>
+    <div data-aos="fade-in" data-aos-duration="3000" data-aos-delay="3000" class="boxes">
+      <div id="happy" class="card">
+        <img src="img/happy.png" alt="happy">
+        happy
+      </div>
+      <div id="sad" class="card">
+        <img src="img/sad.png" alt="sad">
+        sad
+      </div>
+      <div id="anxious" class="card">
+        <img src="img/anxious.png" alt="anxious">
+        anxious
+      </div>
+      <div id="mad" class="card">
+        <img src="img/mad.png" alt="mad">
+        mad
+      </div>
+    </div>
+
+    <h2 data-aos="fade-right" data-aos-duration="3000" class="slider">One thing you struggle with</h2>
+    <div data-aos="fade-in" data-aos-duration="3000" class="boxes">
+      <div id="time" class="card">
+        <img src="img/time.png" alt="time">
+        keeping track of time
+      </div>
+      <div id="done" class="card">
+        <img src="img/check.png" alt="check">
+        getting things done
+      </div>
+      <div id="care" class="card">
+        <img src="img/care.png" alt="care">
+        taking care of yourslef
+      </div>
+    </div>
+
+    <h2 data-aos="fade-right" data-aos-duration="3000" class="slider">A goal you wish to achieve</h2>
+    <div data-aos="fade-in" data-aos-duration="3000" class="boxes">
+      <div id="sleep"  class="card">
+        <img src="img/sleep.png" alt="sleep">
+        sleep more & better
+      </div>
+      <div id="addiction" class="card">
+        <img  src="img/stop.png" alt="addiction">
+        get rid of an addiction
+      </div>
+      <div id="finnish" class="card">
+        <img  src="img/finish.png" alt="finnish">
+        finnish a project
+      </div>
+    </div>
+    <div id="button2">
+      Done
+    </div>
+  </div>
+  <script src="./renderer.js"></script>
+  <script src="node_modules/aos/dist/aos.js"></script>
+</body>
+</html>

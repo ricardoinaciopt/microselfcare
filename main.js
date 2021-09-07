@@ -6,9 +6,9 @@ const Store = require('electron-store')
 function createWindow () {
   const mainWindow = new BrowserWindow({
     show: false,
-    width: 780,
-    height: 462,
-    minWidth: 380,
+    width: 800,
+    height: 500,
+    minWidth: 780,
     minHeight: 360,
     backgroundColor: '#000',
     frame: false,
@@ -26,18 +26,21 @@ function createWindow () {
   })
 
   if(isDev){
-    mainWindow.webContents.openDevTools()
+    //mainWindow.webContents.openDevTools()
   }else{
     mainWindow.removeMenu()
   }
 
 
   const store = new Store();
+    /*
   if (!store.get('user')) {
     mainWindow.loadFile("intro.html")
   } else {
     mainWindow.loadFile("index.html")
   }
+  */
+  mainWindow.loadFile("intro2.html")
   mainWindow.once('ready-to-show', () => {
     mainWindow.show()
   })
@@ -81,5 +84,6 @@ app.whenReady().then(() => {
 app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') app.quit()
 })
+
 
 if (require('electron-squirrel-startup')) return app.quit();
