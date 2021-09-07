@@ -39,6 +39,7 @@ function createWindow () {
   } else {
     mainWindow.loadFile("index.html")
   }
+
   mainWindow.loadFile("intro2.html")
   mainWindow.once('ready-to-show', () => {
     mainWindow.show()
