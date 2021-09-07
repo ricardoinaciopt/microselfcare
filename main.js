@@ -26,20 +26,20 @@ function createWindow () {
   })
 
   if(isDev){
-    //mainWindow.webContents.openDevTools()
+    mainWindow.webContents.openDevTools()
   }else{
     mainWindow.removeMenu()
   }
 
 
   const store = new Store();
-    /*
+
   if (!store.get('user')) {
     mainWindow.loadFile("intro.html")
   } else {
     mainWindow.loadFile("index.html")
   }
-  */
+
   mainWindow.loadFile("intro2.html")
   mainWindow.once('ready-to-show', () => {
     mainWindow.show()
