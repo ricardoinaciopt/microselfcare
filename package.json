@@ -1,40 +1,11 @@
 {
   "name": "microselfcare",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "the app that cares about you",
   "repository": "https://github.com/ricardoinaciopt/microselfcare",
   "main": "main.js",
   "config": {
-    "forge": {
-      "packagerConfig": {
-        "icon": "icon.ico"
-      },
-      "makers": [
-        {
-          "name": "@electron-forge/maker-squirrel",
-          "config": {
-            "name": "microselfcare",
-            "iconUrl": "https://raw.githubusercontent.com/ricardoinaciopt/microselfcare/master/icon.ico",
-            "loadingGif": "img/load.gif",
-            "setupIcon": "icon.ico"
-          }
-        },
-        {
-          "name": "@electron-forge/maker-zip",
-          "platforms": [
-            "darwin, linx, win32"
-          ]
-        },
-        {
-          "name": "@electron-forge/maker-deb",
-          "config": {}
-        },
-        {
-          "name": "@electron-forge/maker-rpm",
-          "config": {}
-        }
-      ]
-    }
+    "forge": "forge.config.js"
   },
   "scripts": {
     "start": "electron-forge start",
@@ -65,6 +36,7 @@
   },
   "dependencies": {
     "electron-is-dev": "^2.0.0",
+    "aos": "^2.3.4",
     "electron-squirrel-startup": "^1.0.0",
     "electron-store": "^8.0.0"
   }

@@ -28,7 +28,7 @@ function createWindow () {
   if(isDev){
     mainWindow.webContents.openDevTools()
   }else{
-    mainWindow.removeMenu()
+    //mainWindow.removeMenu()
   }
 
 
@@ -40,7 +40,6 @@ function createWindow () {
     mainWindow.loadFile("index.html")
   }
 
-  mainWindow.loadFile("intro2.html")
   mainWindow.once('ready-to-show', () => {
     mainWindow.show()
   })
@@ -68,6 +67,10 @@ function createWindow () {
   })
 
   ipcMain.on('userexists', () => {
+    mainWindow.loadFile('intro2.html');
+  })
+
+  ipcMain.on('userdone', () => {
     mainWindow.loadFile('index.html');
   })
 }

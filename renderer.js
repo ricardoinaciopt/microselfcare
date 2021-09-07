@@ -32,13 +32,6 @@ if(document.querySelector('#button')){
   })
 }
 
-if(store.get('user')){
-  document.querySelector('#un').textContent = store.get('user');
-}else {
-  document.querySelector('#un').textContent = "UNDEFINED USER";
-  console.log("UNDEFINED USER");
-}
-
 let moods = ["happy","sad","anxious","mad"];
 let struggles = ["time","done","care"];
 let goals = ["sleep","addiction","finnish"];
@@ -55,6 +48,14 @@ function addSelect(arr,pos) {
 }
 
 if(document.querySelector('#intro-content2')){
+
+  if(store.get('user')){
+    document.querySelector('#un').textContent = store.get('user');
+  }else {
+    document.querySelector('#un').textContent = "UNDEFINED USER";
+    console.log("UNDEFINED USER");
+  }
+
   document.querySelector('#happy').addEventListener('click', () => {
     addSelect(moods,0);
     user_mood = moods[0];
@@ -110,6 +111,7 @@ if(document.querySelector('#intro-content2')){
     store.set('mood',user_mood);
     store.set('struggle',user_struggle);
     store.set('goal',user_goal);
+    ipc.send('userdone');
 
   })
 }
