@@ -8,28 +8,32 @@
   <title>Mini Self-Care</title>
 </head>
 <body>
-    <div id="bar">
-        <img id="x" class="icons" src="img/close.png" />
-        <img id="maxi" class="icons" src="img/maximize.png" />
-        <img id="mini" class="icons" src="img/minimize.png" />
+  <div id="bar">
+    <img id="x" class="icons" src="img/close.png" />
+    <img id="maxi" class="icons" src="img/maximize.png" />
+    <img id="mini" class="icons" src="img/minimize.png" />
+  </div>
+  <div id="overlay"></div>
+  <div id="content">
+    <img id="bglogo2" src="img/icon.png" alt="">
+    <h1 id="greet" data-aos="fade-right" data-aos-duration="3000" data-aos-delay="600"><span id="timeofday"></span>, <span id="user"></span>.</h1>
+    <div id="mystats">
+      <img id="statx" src="img/close.png" alt="">
+      <h2>My stats</h2>
+      <img src="img/line.png" alt="">
+      <br>
+      <h3>to achieve:</h3>
+      <span id="user-goal"></span>
+
+      <h3>to overcome:</h3>
+      <span id="user-struggle"></span>
+
+      <h3>how I ususally feel:</h3>
+      <span id="user-mood"></span>
     </div>
-    <div id="content">
-      <div class="card">
 
-      </div>
-      <div class="card">
-
-      </div>
-      <div class="card">
-
-      </div>
-      <div class="card">
-
-      </div>
-      <div class="card">
-
-      </div>
-    </div>
+    <img id="me" src="img/me.png" alt="">
+  </div>
   <script src="./renderer.js"></script>
   <script src="node_modules/aos/dist/aos.js"></script>
 </body>
