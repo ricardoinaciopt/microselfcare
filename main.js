@@ -1,4 +1,4 @@
-const {app, BrowserWindow, ipcMain} = require('electron')
+const {app, BrowserWindow, ipcMain, shell} = require('electron')
 const path = require('path')
 const isDev = require('electron-is-dev')
 const Store = require('electron-store')
@@ -28,9 +28,13 @@ function createWindow () {
   if(isDev){
     mainWindow.webContents.openDevTools()
   }else{
-    //mainWindow.removeMenu()
+    mainWindow.removeMenu()
   }
 
+  mainWindow.webContents.setWindowOpenHandler(({ url }) => {
+    shell.openExternal(url);
+    return { action: 'deny' };
+  })
 
   const store = new Store();
 

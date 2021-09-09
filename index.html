@@ -5,9 +5,9 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
   <link rel="stylesheet" href="node_modules/aos/dist/aos.css" />
   <link rel="stylesheet" href="style.css">
-  <title>Mini Self-Care</title>
+  <title>microselfcare</title>
 </head>
-<body>
+<body class="start-scrolling">
   <div id="bar">
     <img id="x" class="icons" src="img/close.png" />
     <img id="maxi" class="icons" src="img/maximize.png" />
@@ -17,8 +17,63 @@
   <div id="content">
     <img id="bglogo2" src="img/icon.png" alt="">
     <h1 id="greet" data-aos="fade-right" data-aos-duration="3000" data-aos-delay="600"><span id="timeofday"></span>, <span id="user"></span>.</h1>
-    <div id="mystats">
-      <img id="statx" src="img/close.png" alt="">
+    <h2 id="clock" data-aos="fade-right" data-aos-duration="3000" data-aos-delay="800"><span class="day"></span>, <span class="hours"></span>:<span class="minutes"></span> </h2>
+    <div data-aos="fade-up" data-aos-duration="2000" id="mainplace">
+      <div class="mainboxes">
+        <h2>Daily Mood</h2>
+        <p>As you told me, you usually feel <b><span id="mymood"></span></b>.<br /> Let's track your daily mood to see how you improve over time.</p>
+        <img class="mainboxes-ico" id="moodicon">
+        <img class="set" id="mood-set" src="img/set.png">
+        <span id="already">thank you for telling me.</span>
+      </div>
+      <div class="mainboxes">
+        <h2>Overwork Timer</h2>
+        <p>Make sure you are not overworking yourself.</p>
+        <b><span id="current-timer"></span></b>
+        <img class="mainboxes-ico" src="img/time.png">
+        <img class="set" id="time-set" src="img/set.png">
+      </div>
+      <div class="mainboxes">
+
+      </div>
+      <div class="mainboxes">
+
+      </div>
+      <div class="mainboxes">
+
+      </div>
+      <div class="mainboxes">
+
+      </div>
+    </div>
+    <!-- modal menus -->
+    <div class="modal-win" id="mood-set-win">
+      <img class="modalx" id="mood-set-x" src="img/close.png" alt="">
+      <h2>Daily Mood</h2>
+      <p>Track how you feel and get a report at the end of every week (or 7 day cycle).</p>
+      <span class="modal-warn">you can only set your mood once a day</span>
+      <h2>How are you feeling today?</h2>
+      <div class="but-box">
+        <div id="happy" class="mood-but">happy</div>
+        <div id="sad" class="mood-but">sad</div>
+        <div id="mad" class="mood-but">mad</div>
+        <div id="anxious" class="mood-but">anxious</div>
+      </div>
+    </div>
+
+    <div class="modal-win" id="time-set-win">
+      <img class="modalx" id="time-set-x" src="img/close.png" alt="">
+      <h2>Overwork Timer</h2>
+      <p>Overworking and overstressing yourself can be extremelly harmful to your health, so please, make sure you are taking frequent breaks from whatever you are doing, to assure an healthy work ethic.</p>
+      <span class="modal-warn">setting a new timer will erase the previous one</span>
+      <h2>Set Timer</h2>
+      <div id="halfh" class="timer-but">every 30 minutes</div>
+      <div id="oneh" class="timer-but">every hour</div>
+      <div id="twoh" class="timer-but">each 2 hours</div>
+    </div>
+
+    <div class="modal-win" id="mystats">
+      <img class="modalx"  id="statx" src="img/close.png" alt="">
       <h2>My stats</h2>
       <img src="img/line.png" alt="">
       <br>
@@ -30,6 +85,8 @@
 
       <h3>how I ususally feel:</h3>
       <span id="user-mood"></span>
+      <h5>developed by <a target="_blank" href="https://www.ricardoinacio.pt">Ricardo Inácio</a></h5>
+      <h6>check this app's page on <a>itch.io</a></h6>
     </div>
 
     <img id="me" src="img/me.png" alt="">
