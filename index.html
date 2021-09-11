@@ -8,6 +8,7 @@
   <title>microselfcare</title>
 </head>
 <body class="start-scrolling">
+  <audio id="sfx" src="sfx/ding.mp3" preload="auto"></audio>
   <div id="bar">
     <img id="x" class="icons" src="img/close.png" />
     <img id="maxi" class="icons" src="img/maximize.png" />
@@ -17,7 +18,7 @@
   <div id="content">
     <img id="bglogo2" src="img/icon.png" alt="">
     <h1 id="greet" data-aos="fade-right" data-aos-duration="3000" data-aos-delay="600"><span id="timeofday"></span>, <span id="user"></span>.</h1>
-    <h2 id="clock" data-aos="fade-right" data-aos-duration="3000" data-aos-delay="800"><span class="day"></span>, <span class="hours"></span>:<span class="minutes"></span> </h2>
+    <h2 id="clock" data-aos="fade-right" data-aos-duration="3000" data-aos-delay="800"></h2>
     <div data-aos="fade-up" data-aos-duration="2000" id="mainplace">
       <div class="mainboxes">
         <h2>Daily Mood</h2>
@@ -25,6 +26,7 @@
         <img class="mainboxes-ico" id="moodicon">
         <img class="set" id="mood-set" src="img/set.png">
         <span id="already">thank you for telling me.</span>
+        <span id="available">Weekly Mood Resume Available!</span>
       </div>
       <div class="mainboxes">
         <h2>Overwork Timer</h2>
@@ -32,12 +34,6 @@
         <b><span id="current-timer"></span></b>
         <img class="mainboxes-ico" src="img/time.png">
         <img class="set" id="time-set" src="img/set.png">
-      </div>
-      <div class="mainboxes">
-
-      </div>
-      <div class="mainboxes">
-
       </div>
       <div class="mainboxes">
 
@@ -59,6 +55,25 @@
         <div id="mad" class="mood-but">mad</div>
         <div id="anxious" class="mood-but">anxious</div>
       </div>
+    </div>
+
+    <div class="modal-win" id="mood-resume-win">
+      <img class="modalx" id="mood-resume-x" src="img/close.png" alt="">
+      <h2>Weekly Mood Resume</h2>
+      <p>This is your weekly mood resume. Since the last time I checked, you have felt:</p>
+
+      <div id="mood-box">
+        <div class="mood-otd"><img class="md-img" id="md1img" ><span id="md1"></span></div>
+        <div class="mood-otd"><img class="md-img" id="md2img" ><span id="md2"></span></div>
+        <div class="mood-otd"><img class="md-img" id="md3img" ><span id="md3"></span></div>
+        <div class="mood-otd"><img class="md-img" id="md4img" ><span id="md4"></span></div>
+        <div class="mood-otd"><img class="md-img" id="md5img" ><span id="md5"></span></div>
+        <div class="mood-otd"><img class="md-img" id="md6img" ><span id="md6"></span></div>
+        <div class="mood-otd"><img class="md-img" id="md7img" ><span id="md7"></span></div>
+      </div>
+
+      <h3>Insights</h3>
+      <p>It seems that you felt mostly <b><span id="week-mood"></span></b> in the last 7 days. <span id="week-rec"></span>  </p>
     </div>
 
     <div class="modal-win" id="time-set-win">
