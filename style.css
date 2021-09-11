@@ -138,6 +138,7 @@ a:hover{
   text-align: justify;
   margin: 20px;
   letter-spacing: .5px;
+  font-size: 14px;
 }
 
 .modal-win h2,h3{
@@ -206,6 +207,18 @@ a:hover{
 
 }
 
+#botplace{
+  width: 750px;
+  margin: auto;
+  margin-top: 600px;
+  height: 200px;
+  border-radius: 3px;
+  color: #232526;
+  background: #d3d3d3;
+  opacity: 0.9;
+  position: relative;
+}
+
 .mainboxes{
   position: relative;
   display: flex;
@@ -242,6 +255,16 @@ a:hover{
   opacity: 0.6
 }
 
+#moodicon2{
+  filter: blur(1px);
+  width: 70px;
+  height: 70px;
+  position: absolute;
+  bottom: 5px;
+  right: 50px;
+  opacity: 0.6
+}
+
 #current-timer{
   margin-left: 10px;
   font-size: 15px;
@@ -266,7 +289,7 @@ a:hover{
   text-decoration: underline;
   visibility: hidden;
   position: absolute;
-  bottom: 100px;
+  bottom: 80px;
   left: 10px;
   font-size: 12px;
   opacity: 0.8;

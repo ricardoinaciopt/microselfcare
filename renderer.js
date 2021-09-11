@@ -31,7 +31,7 @@ if(document.querySelector('#maxi')){
   })
   var sample = document.getElementById("sfx");
   sample.play();
-  sample.volume = 0.2;
+  sample.volume = 0.3;
 }
 
 document.querySelector('#mini').addEventListener('click', () => {
@@ -119,6 +119,48 @@ if(document.querySelector('#timeofday')){
     document.getElementById("mymood").textContent = "anxious";
     document.getElementById("moodicon").setAttribute("src","img/anxious.png");
     break;
+    case 'anxious and happy':
+    case 'happy and anxious':
+    document.getElementById("user-mood").textContent = "anxious and happy.";
+    document.getElementById("mymood").textContent = "anxious and happy";
+    document.getElementById("moodicon").setAttribute("src","img/anxious.png");
+    document.getElementById("moodicon2").setAttribute("src","img/happy.png");
+    break;
+    case 'anxious and sad':
+    case 'sad and anxious':
+    document.getElementById("user-mood").textContent = "anxious and sad.";
+    document.getElementById("mymood").textContent = "anxious and sad";
+    document.getElementById("moodicon").setAttribute("src","img/anxious.png");
+    document.getElementById("moodicon2").setAttribute("src","img/sad.png");
+    break;
+    case 'anxious and mad':
+    case 'mad and anxious':
+    document.getElementById("user-mood").textContent = "anxious and mad.";
+    document.getElementById("mymood").textContent = "anxious and mad";
+    document.getElementById("moodicon").setAttribute("src","img/anxious.png");
+    document.getElementById("moodicon2").setAttribute("src","img/mad.png");
+    break;
+    case 'sad and happy':
+    case 'happy and sad':
+    document.getElementById("user-mood").textContent = "sad and happy.";
+    document.getElementById("mymood").textContent = "sad and happy";
+    document.getElementById("moodicon").setAttribute("src","img/sad.png");
+    document.getElementById("moodicon2").setAttribute("src","img/happy.png");
+    break;
+    case 'mad and happy':
+    case 'happy and mad':
+    document.getElementById("user-mood").textContent = "mad and happy.";
+    document.getElementById("mymood").textContent = "mad and happy";
+    document.getElementById("moodicon").setAttribute("src","img/mad.png");
+    document.getElementById("moodicon2").setAttribute("src","img/happy.png");
+    break;
+    case 'mad and sad':
+    case 'sad and mad':
+    document.getElementById("user-mood").textContent = "mad and sad.";
+    document.getElementById("mymood").textContent = "sad and mad";
+    document.getElementById("moodicon").setAttribute("src","img/mad.png");
+    document.getElementById("moodicon2").setAttribute("src","img/sad.png");
+    break;
   }
 
   //main stats window
@@ -198,7 +240,7 @@ if(document.querySelector('#timeofday')){
       document.getElementById(md).textContent = "happy";
       break;
       case 'mad':
-      document.getElementById(md).setAttribute("src","img/mad.png");
+      document.getElementById(mdimg).setAttribute("src","img/mad.png");
       document.getElementById(md).textContent = "mad";
       break;
       case 'sad':
@@ -240,7 +282,7 @@ if(document.querySelector('#timeofday')){
       return "There's nothing to add! You are feeling how you deserve to feel every day, happy. Whatever you are doing, keep on doing it and keep up the excellent work!";
       break;
       case 'sad':
-      return "It is ok to feel sad. It is part of the journey to find happiness. Take a moment to yourself, and think about what is making you feel this way. Can you make something to make it better? If yes, then give it your best shot, and do what you got to do. However, if you're not able to, try to learn from it, trying your best to reach inner acceptance, and heal from it, because every time you're trying to leave something unwanted behind, you are making space for something far greater, that has yet to come.";
+      return "It is ok to feel sad. It is part of the journey to find happiness. Take a moment to yourself, and think about what is making you feel this way. Can you do something to make it better? If yes, then give it your best shot, and do what you got to do. However, if you're not able to, try to learn from it, trying your best to reach inner acceptance, and heal from it, because every time you're trying to leave something unwanted behind, you are making space for something far greater, that has yet to come.";
       break;
       case 'anxious':
       return "Feeling anxious is perfectly normal, whether it's because of something scary you'll have to experience, do, or make. But you have to remember why you have to do that, or what will come, as a result of those scary actions, because sometimes, the payoff is far greater than the leap you have to take. Don't let your fears hold you back, ever. Although, if you think the level of anxiety you are feeling is abnormal, you should seek a professional.";
@@ -248,36 +290,45 @@ if(document.querySelector('#timeofday')){
       case 'mad':
       return "That feeling does not serve another purpose other than wasting your time and reducing significantly your chance to have peace of mind. Throughout your life, you will face lots of situations that may mess with your temper, and after putting some thought into it, you'll realise that most of the time, that will not affect you at all, so try to remain calm and putting your sanity above all. In the cases that indeed will affect you, always seek the safest and most well-thought solution, as it will not only avoid conflict but keeping your mind at peace.";
       break;
-      case 'happy and sad' || 'sad and happy':
+      case 'sad and happy':
+      case 'happy and sad':
       return "Although you are feeling happy, there is still a trace of sadness inside of you. You are on the correct path, and clearly making good choices, but still, try and reach inside you to find what is causing all those unwanted feelings, and see why this emotional clash is happening. Just make sure to remember that confusion is part of our nature, and all starts to be well, when we are correct and stay truthful to ourselves.";
       break;
-      case 'happy and mad' || 'mad and happy':
+      case 'mad and happy':
+      case 'happy and mad':
       return "Although you are feeling happy, there is a fire burning inside of you, and the smoke doesn't let you see the beauty of life to its fullest. Maybe something or someone is bothering you, but you can't in any way let that change you for the worse. Stay true to yourself, and great things will come, or in this case, will keep coming your way. Try to realise what is causing this uproar in your soul and take care of it as soon as you can, so you can enjoy a peaceful life.";
       break;
-      case 'happy and anxious' || 'anxious and happy':
+      case 'anxious and happy':
+      case 'happy and anxious':
       return "Although you are feeling happy, something isn't quite right. Something is going on that makes it impossible for you to enjoy your life to the fullest. Remember that you cannot control everything, and you shouldn't take everything so serious. Don't let your fears and this constant state of preoccupation stress you out, and take your peace away from you. Look around, and enjoy the world around you, and you will realise that every little problem will eventually be solved. The only thing you should worry about is if you are enjoying your life.";
       break;
-      case 'sad and anxious' || 'anxious and sad':
+      case 'anxious and sad':
+      case 'sad and anxious':
       return "Your current state can be a bit worrying, as you experienced two negative emotions that can seriously affect your quality of life. Take a moment to realise what makes you feel this way so that you can finally make a change for the better. You are holding onto something that is probably not worth it. However, you are afraid to let it go and getting hurt in the process. Make a retrospective, and try to understand what matters the most and what can you do (or stop doing) to contribute to your happiness, which is the most important thing, after all.";
       break;
-      case 'mad and anxious' || 'anxious and mad':
+      case 'anxious and mad':
+      case 'mad and anxious':
       return "Your current state can be a bit worrying, as you experienced two negative emotions that can seriously affect your quality of life. Take a moment to realise what makes you feel this way so that you can finally make a change for the better. You are holding onto something that is probably not worth it. However, you are afraid to let it go and getting hurt in the process. Make a retrospective, and try to understand what matters the most and what can you do (or stop doing) to contribute to your happiness, which is the most important thing, after all.";
       break;
-      case 'mad and sad' || 'sad and mad':
-      return "that you saw or happened put you in this state of anger against the world, which may negatively affect your mental health. However, it's crucial to get to the bottom of the question and realise what's making you feel this way. Remember that the world isn't always fair, and things that may be upsetting happen every day. It's then your choice to let these things affect you, or take action, whereas that be by ignoring what can't be changed, achieving true peace, or doing everything you can to change that, making the world a better place.";
+      case 'sad and mad':
+      case 'mad and sad':
+      return "I can see that you are upset and revolted. Something that you saw or happened put you in this state of anger against the world, which may negatively affect your mental health. However, it's crucial to get to the bottom of the question and realise what's making you feel this way. Remember that the world isn't always fair, and things that may be upsetting happen every day. It's then your choice to let these things affect you, or take action, whereas that be by ignoring what can't be changed, achieving true peace, or doing everything you can to change that, making the world a better place.";
       break;
     }
   }
 
-  if(dayn == 7){
+  if(dayn == 7 && moodtodayFlag == false){
     document.getElementById("available").style.visibility='visible';
   }
 
+
   if(getToday() == moodtodayDate){
-    //moodtodayFlag = true;
+    moodtodayFlag = true;
+  }else{
+    moodtodayFlag = false;
   }
 
-  if(!moodtodayFlag){
+  if(moodtodayFlag == false){
     document.querySelector('#mood-set').addEventListener('click', () => {
       document.getElementById("overlay").style.visibility='visible';
       document.body.classList.add("stop-scrolling");
@@ -298,6 +349,7 @@ if(document.querySelector('#timeofday')){
 
         var most = mode(userMoodsArr);
         console.log(most);
+        console.log(insight(most));
         document.getElementById("week-mood").textContent = most;
         document.getElementById("week-rec").textContent = insight(most);
 
@@ -309,7 +361,8 @@ if(document.querySelector('#timeofday')){
           document.body.classList.add("start-scrolling");
           store.delete('dayn');
           store.delete('moods');
-          store.set('moodtoday',false);
+          store.set('mood', most);
+          location.reload(true);
         })
       }else{
         document.getElementById("mood-set-win").style.visibility='visible';
@@ -325,7 +378,8 @@ if(document.querySelector('#timeofday')){
         }else if(dayn == 1 || dayn < 7){
           store.set('dayn', dayn += 1);
           moodSetter(dayn,'happy');
-          store.set('moodtoday',true);
+          store.set('moodtoday.day',getToday());
+          store.set('moodtoday.flag',true);
         }
 
         document.getElementById("mood-set-win").style.visibility='hidden';
@@ -346,7 +400,8 @@ if(document.querySelector('#timeofday')){
         }else if(dayn == 1 || dayn < 7){
           store.set('dayn', dayn += 1);
           moodSetter(dayn,'anxious');
-          store.set('moodtoday',true);
+          store.set('moodtoday.day',getToday());
+          store.set('moodtoday.flag',true);
         }
 
         document.getElementById("mood-set-win").style.visibility='hidden';
@@ -367,7 +422,8 @@ if(document.querySelector('#timeofday')){
         }else if(dayn == 1 || dayn < 7){
           store.set('dayn', dayn += 1);
           moodSetter(dayn,'sad');
-          store.set('moodtoday',true);
+          store.set('moodtoday.day',getToday());
+          store.set('moodtoday.flag',true);
         }
 
         document.getElementById("mood-set-win").style.visibility='hidden';
@@ -387,8 +443,9 @@ if(document.querySelector('#timeofday')){
           store.set('moodtoday.day',getToday());
         }else if(dayn == 1 || dayn < 7){
           store.set('dayn', dayn += 1);
-          moodSetter(dayn,'sad');
-          store.set('moodtoday',true);
+          moodSetter(dayn,'mad');
+          store.set('moodtoday.day',getToday());
+          store.set('moodtoday.flag',true);
         }
 
         document.getElementById("mood-set-win").style.visibility='hidden';
