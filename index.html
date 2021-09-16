@@ -26,7 +26,7 @@
         <img class="mainboxes-ico" id="moodicon">
         <img class="mainboxes-ico" id="moodicon2">
         <img class="set" id="mood-set" src="img/set.png">
-        <span id="already">thank you for telling me.</span>
+        <span id="already">thank you for telling me,<br />come back tomorrow</span>
         <span id="available">Weekly Mood Resume Available!</span>
       </div>
       <div class="mainboxes">
@@ -36,8 +36,15 @@
         <img class="mainboxes-ico" src="img/time.png">
         <img class="set" id="time-set" src="img/set.png">
       </div>
+      <!--tasks-->
       <div class="mainboxes">
-
+        <img class="set" id="task-set" src="img/set.png">
+        <h2>My Tasks</h2>
+        <p>Get things done, in time.</p>
+        <audio id="chk" src="sfx/chk.mp3" preload="auto"></audio>
+        <div id="task-container-none">There aren't any active tasks as of right now.</div>
+        <div id="task-container">
+        </div>
       </div>
       <div class="mainboxes">
 
@@ -89,6 +96,16 @@
       <div id="halfh" class="timer-but">every 30 minutes</div>
       <div id="oneh" class="timer-but">every hour</div>
       <div id="twoh" class="timer-but">each 2 hours</div>
+    </div>
+
+    <div class="modal-win" id="task-set-win">
+      <img class="modalx" id="task-set-x" src="img/close.png" alt="">
+      <h2>Task Manager</h2>
+      <p>Manage and organize what you have to do.</p>
+      <span id='task-error' class="modal-warn">you can't add an empty task.</span>
+      <input id="task-typer" type="text" maxlength="20"/>
+      <div id="task-add">Add</div>
+      <span id="tae">or press enter</span>
     </div>
 
     <div class="modal-win" id="mystats">

@@ -47,7 +47,13 @@ img {
   -khtml-user-drag: none;
   -moz-user-drag: none;
   -o-user-drag: none;
+  display: none;
 }
+
+img[src] {
+  display: block;
+}
+
 
 #sfx { display: none }
 
@@ -210,13 +216,92 @@ a:hover{
 #botplace{
   width: 750px;
   margin: auto;
-  margin-top: 600px;
+  margin-top: 650px;
+  margin-bottom: 50px;
   height: 200px;
   border-radius: 3px;
   color: #232526;
   background: #d3d3d3;
   opacity: 0.9;
   position: relative;
+}
+
+
+#task-container{
+  flex: 1;
+  width: 300px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+#task-container::-webkit-scrollbar {
+  width: 12px;
+  background: none;
+}
+
+#task-container::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+
+  border-width: 5px 5px 5px 0;
+  border-color: #d3d3d3;
+
+
+}
+
+#task-container::-webkit-scrollbar-track {
+  border-color: #d3d3d3;
+  box-shadow: inherit 0 0 6px rgba(0,0,0,0.3);
+  border-radius: 10px;
+
+}
+
+#task-container-none{
+  margin: 15px;
+  top: 35%;
+  font-size: 14px;
+  opacity: 0.5;
+  visibility: hidden;
+  position: absolute;
+}
+
+.task-box{
+  position: relative;
+  width: 90%;
+  margin: 5px;
+  height: 40px;
+  border-radius: 3px;
+  background:#1a1a1a;
+  color: #d3d3d3;
+  opacity: 0.9;
+  line-height: 40px;
+}
+
+.edit-task{
+  position: absolute;
+  right: 10px;
+  top: 7.5px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  color: #232526;
+  background: #d3d3d3;
+}
+
+.edit-task img{
+  width: 25px;
+  height: 25px;
+  opacity: 0.6;
+}
+
+.task-name{
+  font-size: 14px;
+  margin-left: 5px;
+}
+
+#task-set{
+  position: absolute;
+  left: 265px;
+  top: 5px;
 }
 
 .mainboxes{
@@ -294,6 +379,7 @@ a:hover{
   font-size: 12px;
   opacity: 0.8;
 }
+
 
 .set{
   width: 30px;
@@ -398,6 +484,26 @@ a:hover{
   animation-duration: 3s;
 }
 
+#task-typer{
+  border: none;
+  outline: none;
+  background-color: #4d4c4c;
+  box-shadow: 0px 0px 15px -8px rgba(0,0,0,0.75);
+  font-size: 24px;
+  width: 350px;
+  height: 40px;
+  margin: auto;
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: #dedede;
+  font-family: 'PTMono-Regular';
+  border-radius: 8px;
+  padding-left: 12px;
+}
+
 @keyframes fading {
   from {
     opacity: 0;
@@ -478,6 +584,23 @@ a:hover{
   right: 0;
 }
 
+#task-error{
+  font-family: 'PTMono-Regular';
+  color: #ad4740;
+  visibility: hidden;
+  position: absolute;
+  margin: 0;
+  display: inline-block;
+  text-align: center;
+  height: 50px;
+  font-size: 12px;
+  line-height: 50px;
+  top:35%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
 .modal-warn{
   font-size: 10px;
   color: #ad4740;
@@ -521,6 +644,27 @@ a:hover{
   background-color: #d3d3d3;
   margin: 0 auto;
   margin-bottom: 50px;
+}
+
+#task-add{
+  width: 100px;
+  height: 35px;
+  line-height: 35px;
+  font-size: 20px;
+  border-radius: 3px;
+  background: #232526;
+  cursor: grab;
+  text-align: center;
+  color: #d3d3d3;
+  margin: 0 auto;
+  margin-top: 150px;
+  margin-bottom: 50px;
+}
+
+#tae{
+  font-size: 12px;
+  margin: 0 auto;
+  margin-top: -30px;
 }
 
 .timer-but{

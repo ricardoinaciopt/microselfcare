@@ -31,7 +31,7 @@ if(document.querySelector('#maxi')){
   })
   var sample = document.getElementById("sfx");
   sample.play();
-  sample.volume = 0.3;
+  sample.volume = 0.4;
 }
 
 document.querySelector('#mini').addEventListener('click', () => {
@@ -511,6 +511,158 @@ if(document.querySelector('#timeofday')){
     document.body.classList.add("start-scrolling");
   })
 
+  //task settings window
+
+  function getTaskBar(){
+    var taskn = store.get('taskn');
+    var tasklist = store.get('tasks');
+
+    var jstasklist = [];
+    for(var i in tasklist) {
+      jstasklist.push(tasklist[i]);
+    }
+    var container = document.getElementById("task-container");
+    while (container.firstChild) {
+      container.firstChild.remove()
+    }
+
+    for (var i = 0; i < taskn; i++) {
+
+      var taskn = store.get('taskn');
+      var taskbar = document.createElement('div');
+      taskbar.classList.add("task-box");
+      taskbar.id = "taskbox" + (i+1);
+      document.getElementById("task-container").appendChild(taskbar);
+
+      var tasktext = document.createElement('span');
+      tasktext.classList.add("task-name");
+      tasktext.textContent = jstasklist[i];
+      document.getElementsByClassName("task-box")[i].appendChild(tasktext);
+
+      var editbox = document.createElement('div');
+      editbox.classList.add("edit-task");
+      document.getElementsByClassName("task-box")[i].appendChild(editbox);
+
+      var editimg = document.createElement('img');
+      editimg.id = "del" + (i+1);
+      editimg.setAttribute('src','img/check.png');
+      document.getElementsByClassName("edit-task")[i].appendChild(editimg);
+
+      document.getElementById("task-container-none").style.visibility = "hidden";
+    }
+  }
+
+
+  function delTaskbar(n){
+    document.querySelector("#taskbox" + n).remove();
+    var sound = document.getElementById("chk");
+    sound.currentTime = 0;
+    sound.play();
+    store.delete('tasks.'+n);
+    var ntaskn = store.get('taskn') - 1;
+    if(ntaskn <= 0){
+      store.delete('taskn');
+      store.delete('tasks');
+      document.getElementById("task-container-none").style.visibility = "visible";
+    }else{
+      store.set('taskn', ntaskn);
+    }
+    checkTasks();
+  }
+
+
+  var tasks = store.get('tasks');
+
+  document.querySelector('#task-set').addEventListener('click', () => {
+    document.getElementById("task-set-win").style.visibility='visible';
+    document.getElementById("overlay").style.visibility='visible';
+    document.body.classList.add("stop-scrolling");
+    document.body.classList.remove("start-scrolling");
+
+    //on click add button
+    document.querySelector('#task-add').addEventListener('click', () => {
+
+      var addedTask = document.getElementById('task-typer').value;
+      var taskn = store.get('taskn');
+      console.log(addedTask);
+      if(!addedTask){
+        document.querySelector('#task-error').style.visibility = "visible";
+      }else{
+        if(taskn == null){
+          store.set('tasks.1',addedTask);
+          store.set('taskn',1);
+          document.getElementById('task-typer').value = "";
+          console.log(taskn);
+          document.querySelector('#task-container-none').style.visibility = "hidden";
+          getTaskBar();
+        }else{
+          var newtaskn = taskn + 1;
+          store.set('taskn',newtaskn);
+          store.set(('tasks.'+newtaskn),addedTask);
+          console.log('tasks.'+newtaskn+' - '+addedTask);
+          document.getElementById('task-typer').value = "";
+          document.querySelector('#task-container-none').style.visibility = "hidden";
+          getTaskBar();
+        }
+      }
+    })
+    //on enter
+    document.addEventListener("keypress", function(event) {
+      if (event.keyCode == 13) {
+        var addedTask = document.getElementById('task-typer').value;
+        var taskn = store.get('taskn');
+        console.log(addedTask);
+        if(!addedTask){
+          document.querySelector('#task-error').style.visibility = "visible";
+        }else{
+          if(taskn == null){
+            store.set('tasks.1',addedTask);
+            store.set('taskn',1);
+            document.getElementById('task-typer').value = "";
+            console.log(taskn);
+            document.querySelector('#task-container-none').style.visibility = "hidden";
+            getTaskBar();
+          }else{
+            var newtaskn = taskn + 1;
+            store.set('taskn',newtaskn);
+            store.set(('tasks.'+newtaskn),addedTask);
+            console.log('tasks.'+newtaskn+' - '+addedTask);
+            document.getElementById('task-typer').value = "";
+            document.querySelector('#task-container-none').style.visibility = "hidden";
+            getTaskBar();
+          }
+        }
+      }
+    })
+  })
+
+  document.querySelector('#task-set-x').addEventListener('click', () => {
+    document.getElementById("task-set-win").style.visibility='hidden';
+    document.getElementById("overlay").style.visibility='hidden';
+    document.getElementById("task-error").style.visibility='hidden';
+    document.body.classList.remove("stop-scrolling");
+    document.body.classList.add("start-scrolling");
+    checkTasks();
+    //location.reload(0);
+  })
+
+  function checkTasks(){
+    if(tasks){
+      getTaskBar();
+      document.getElementById("task-container").onclick = e => {
+        console.log(e.target.id);
+        imgId = e.target.id;
+        if(imgId.indexOf('del') >= 0){
+          delTaskbar(parseInt(imgId.slice(-1)));
+        }
+      }
+    }else {
+      document.getElementById("task-container-none").style.visibility = "visible";
+    }
+  }
+  checkTasks();
+
+  //timer and notification
   if(store.get('timer')){
     switch (store.get('timer')) {
       case '30m':
