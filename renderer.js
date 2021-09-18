@@ -548,7 +548,6 @@ if(document.querySelector('#timeofday')){
       editimg.setAttribute('src','img/check.png');
       document.getElementsByClassName("edit-task")[i].appendChild(editimg);
 
-      document.getElementById("task-container-none").style.visibility = "hidden";
     }
   }
 
@@ -560,18 +559,21 @@ if(document.querySelector('#timeofday')){
     sound.play();
     store.delete('tasks.'+n);
     var ntaskn = store.get('taskn') - 1;
-    if(ntaskn <= 0){
+    console.log(ntaskn);
+    if(ntaskn == 0){
       store.delete('taskn');
       store.delete('tasks');
-      document.getElementById("task-container-none").style.visibility = "visible";
+      console.log('empty');
+      checkTasks(true);
     }else{
       store.set('taskn', ntaskn);
+      checkTasks(false);
     }
-    checkTasks();
   }
 
 
   var tasks = store.get('tasks');
+
 
   document.querySelector('#task-set').addEventListener('click', () => {
     document.getElementById("task-set-win").style.visibility='visible';
@@ -594,7 +596,7 @@ if(document.querySelector('#timeofday')){
           document.getElementById('task-typer').value = "";
           console.log(taskn);
           document.querySelector('#task-container-none').style.visibility = "hidden";
-          getTaskBar();
+          checkTasks(false);
         }else{
           var newtaskn = taskn + 1;
           store.set('taskn',newtaskn);
@@ -602,7 +604,7 @@ if(document.querySelector('#timeofday')){
           console.log('tasks.'+newtaskn+' - '+addedTask);
           document.getElementById('task-typer').value = "";
           document.querySelector('#task-container-none').style.visibility = "hidden";
-          getTaskBar();
+          checkTasks(false);
         }
       }
     })
@@ -620,16 +622,14 @@ if(document.querySelector('#timeofday')){
             store.set('taskn',1);
             document.getElementById('task-typer').value = "";
             console.log(taskn);
-            document.querySelector('#task-container-none').style.visibility = "hidden";
-            getTaskBar();
+            checkTasks(false);
           }else{
             var newtaskn = taskn + 1;
             store.set('taskn',newtaskn);
             store.set(('tasks.'+newtaskn),addedTask);
             console.log('tasks.'+newtaskn+' - '+addedTask);
             document.getElementById('task-typer').value = "";
-            document.querySelector('#task-container-none').style.visibility = "hidden";
-            getTaskBar();
+            checkTasks(false);
           }
         }
       }
@@ -642,12 +642,12 @@ if(document.querySelector('#timeofday')){
     document.getElementById("task-error").style.visibility='hidden';
     document.body.classList.remove("stop-scrolling");
     document.body.classList.add("start-scrolling");
-    checkTasks();
     //location.reload(0);
   })
 
-  function checkTasks(){
-    if(tasks){
+  function checkTasks(emptytasks){
+    if(emptytasks == false){
+      document.getElementById("task-container-none").style.visibility = "hidden";
       getTaskBar();
       document.getElementById("task-container").onclick = e => {
         console.log(e.target.id);
@@ -660,8 +660,12 @@ if(document.querySelector('#timeofday')){
       document.getElementById("task-container-none").style.visibility = "visible";
     }
   }
-  checkTasks();
 
+  if (tasks) {
+    checkTasks(false);
+  } else {
+    checkTasks(true);
+  }
   //timer and notification
   if(store.get('timer')){
     switch (store.get('timer')) {
@@ -789,4 +793,20 @@ if(document.querySelector('#intro-content2')){
     ipc.send('userdone');
 
   })
+}
+
+document.onclick = () => applyCursorRippleEffect(event);
+
+function applyCursorRippleEffect(e) {
+   const ripple = document.createElement("div");
+
+   ripple.className = "ripple";
+   document.body.appendChild(ripple);
+
+  ripple.style.left = `${e.clientX}px`;
+  ripple.style.top = `${e.clientY}px`;
+
+   ripple.style.animation = "ripple-effect .4s  linear";
+   ripple.onanimationend = () => document.body.removeChild(ripple);
+
 }

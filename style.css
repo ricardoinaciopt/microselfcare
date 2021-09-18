@@ -68,6 +68,7 @@ img[src] {
   z-index: 10000;
   top: 0;
   -webkit-app-region: drag;
+  backdrop-filter: blur(30px) saturate(50%);
 }
 
 
@@ -235,25 +236,9 @@ a:hover{
 }
 
 #task-container::-webkit-scrollbar {
-  width: 12px;
-  background: none;
+display: none;
 }
 
-#task-container::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-
-  border-width: 5px 5px 5px 0;
-  border-color: #d3d3d3;
-
-
-}
-
-#task-container::-webkit-scrollbar-track {
-  border-color: #d3d3d3;
-  box-shadow: inherit 0 0 6px rgba(0,0,0,0.3);
-  border-radius: 10px;
-
-}
 
 #task-container-none{
   margin: 15px;
@@ -285,6 +270,7 @@ a:hover{
   border-radius: 50%;
   color: #232526;
   background: #d3d3d3;
+  z-index: 100;
 }
 
 .edit-task img{
@@ -313,8 +299,10 @@ a:hover{
   height: 200px;
   border-radius: 3px;
   color: #232526;
-  background: #d3d3d3;
-  opacity: 0.9;
+  backdrop-filter: blur(19px) saturate(179%);
+  -webkit-backdrop-filter: blur(19px) saturate(179%);
+  background-color: rgba(211, 211, 211, 0.66);
+  border: 1px solid rgba(255, 255, 255, 0.125);
 }
 
 .mainboxes h2{
@@ -446,11 +434,13 @@ a:hover{
   height: 80px;
   margin: 10px;
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
-  background-color: #d3d3d3;
-  opacity: 0.8;
+  -webkit-backdrop-filter: blur(19px) saturate(179%);
+  background-color: rgba(211, 211, 211, 0.66);
+  border: 1px solid rgba(255, 255, 255, 0.125);
   border-radius: 3px;
   color: #232526;
   font-family: 'PTMono-Regular';
+
 }
 
 .card img{
@@ -743,4 +733,22 @@ a:hover{
 .start-scrolling{
   overflow-y: initial;
   overflow-x: hidden;
+}
+
+.ripple {
+  width: 10px;
+  height: 10px;
+  background-color: transparent;
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(2px);
+  border: 1px solid black;
+}
+
+
+@keyframes ripple-effect {
+  to {
+    transform:scale(15);
+    opacity: 0.01;
+  }
 }
