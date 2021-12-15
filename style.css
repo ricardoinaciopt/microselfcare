@@ -237,7 +237,7 @@ a:hover{
 }
 
 #task-container::-webkit-scrollbar {
-display: none;
+  display: none;
 }
 
 
@@ -285,10 +285,33 @@ display: none;
   margin-left: 5px;
 }
 
-#task-set{
+#task-set, #sleep-set{
   position: absolute;
   left: 265px;
   top: 5px;
+}
+
+#sleep-set-win > input{
+  background-color: #232526;
+  padding: 20px 50px;
+  margin: 10px;
+  color: white;
+  border: none;
+  font-size: 22px;
+  border-radius: 3px;
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: invert(1)  saturate(5) hue-rotate(175deg);
+}
+
+input[type=time]::-webkit-datetime-edit-fields-wrapper {
+  display: flex;
+}
+
+
+#addiction-mainboxes, #sleep-mainboxes{
+  display: none;
 }
 
 #addict-box{
@@ -309,6 +332,8 @@ display: none;
   margin: 10px;
   border-radius: 3px;
 }
+
+
 
 .mainboxes{
   position: relative;
@@ -656,7 +681,11 @@ display: none;
   margin-bottom: 50px;
 }
 
-#task-add{
+#sleeph5{
+  visibility: hidden;
+}
+
+#task-add ,#sleep-add{
   width: 100px;
   height: 35px;
   line-height: 35px;

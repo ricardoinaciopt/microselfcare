@@ -12,15 +12,13 @@ var h = d.getHours();
 var dia = d.getDate();
 var mon = d.getMonth() + 1;
 var y = d.getFullYear();
-/*
-function checkZero(i) {
-i = (i < 10) ? "0" + i : i;
-return i;
-}
-*/
+
+
 function getToday() {
   return dia + '/' + mon + '/' + y;
 }
+
+
 
 if (document.querySelector('#username')) {
   var sample = document.getElementById("sfx-intro");
@@ -68,9 +66,10 @@ if (document.querySelector('#timeofday')) {
 
     hrs = hrs < 10 ? "0" + hrs : hrs;
     mins = mins < 10 ? "0" + mins : mins;
-
-    document.querySelector('#clock').textContent = weekDays[day] + ", " + hrs + ":" + mins;
+    var hrsmins = hrs + ":" + mins;
+    document.querySelector('#clock').textContent = weekDays[day] + ", " + hrsmins;
     requestAnimationFrame(timeOfDay);
+    return hrsmins;
   }
 
   timeOfDay();
@@ -751,10 +750,67 @@ if (document.querySelector('#timeofday')) {
 
 }
 
-//Addiction
-if (document.querySelector('#yes-addict')) {
-  addiction();
+//sleep
+var sleeptime;
+document.querySelector('#sleep-set').addEventListener('click', () => {
+  document.getElementById("sleep-set-win").style.visibility = 'visible';
+  document.getElementById("sleeph5").style.visibility = 'visible';
+  document.getElementById("overlay").style.visibility = 'visible';
+  document.body.classList.add("stop-scrolling");
+  document.body.classList.remove("start-scrolling");
+  document.querySelector('#sleep-add').addEventListener('click', () => {
+    sleeptime = document.getElementById("sleep-selecter").value;
+    store.set("sleep.time", sleeptime);
+    document.querySelector('#sleepSpan').textContent = "Time Chosen."
+    document.querySelector('#sleeph5').style.visibility = 'visible';
+    document.querySelector('#sleepShow').textContent = sleeptime
+
+  });
+
+  document.querySelector('#sleep-set-x').addEventListener('click', () => {
+    document.getElementById("sleep-set-win").style.visibility = 'hidden';
+    document.getElementById("overlay").style.visibility = 'hidden';
+    document.querySelector('#sleepSpan').textContent = ""
+    document.body.classList.remove("stop-scrolling");
+    document.body.classList.add("start-scrolling");
+  })
+});
+
+if (store.has("sleep.time")) {
+  document.getElementById("sleeph5").style.visibility = 'visible';
+  document.querySelector('#sleepShow').textContent = store.get("sleep.time")
+  checkSleep();
+
 }
+
+function checkSleep() {
+  var currentTime = timeOfDay();
+
+  if (currentTime == store.get("sleep.time") && store.get("sleep.lastTime") != getToday()) {
+
+    new Notification("Time to dream.", {
+      title: "Time's up! You should get some sleep",
+      body: "The time which you assigned as your ideal sleep time has arrived, consider taking a rest.", icon: "icon.ico", timeoutType: "never"
+    }).onclick = () => console.log("rest time")
+    store.set("sleep.lastTime", getToday());
+  }
+  requestAnimationFrame(checkSleep);
+}
+
+//exclusive
+switch (store.get("goal")) {
+  case "addiction":
+    document.querySelector('#addiction-mainboxes').style.display = "initial";
+    if (document.querySelector('#yes-addict')) {
+      addiction();
+    }
+    break;
+  case "sleep":
+    document.querySelector('#sleep-mainboxes').style.display = "initial";
+
+    break;
+}
+
 
 
 if (document.querySelector('#button')) {

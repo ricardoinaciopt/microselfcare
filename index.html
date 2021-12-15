@@ -47,96 +47,117 @@
         </div>
       </div>
       <!--addiction-->
-      <div class="mainboxes">
+      <div id="addiction-mainboxes" class="mainboxes">
         <h2>Quitting Addictions</h2>
         <p>Stop doing the things that harm you.</p>
         <center>
           <h6 id="addictSpan">Press if you were not able to resist your addiction today</h6>
         </center>
         <div id="addict-box">
-          <div class="addict-boxes" id="yes-addict">):</div>
+          <div class="addict-boxes" id="yes-addict">not today.</div>
         </div>
-        </div>
+      </div>
+      <!--sleep-->
+      <div id="sleep-mainboxes" class="mainboxes">
+        <h2>Sleep Better</h2>
+        <p>Have a peaceful and resting experience every night.</p>
+        <center>
+          <h5 id="sleeph5">Your ideal sleep time is <b> <span id="sleepShow"></span> </b></h5>
+        </center>
+        <img class="mainboxes-ico" src="img/sleep.png">
+        <img class="set" id="sleep-set" src="img/set.png">
       </div>
     </div>
-    <div id="botplace">
-
-    </div>
-    <!-- modal menus -->
-    <div class="modal-win" id="mood-set-win">
-      <img class="modalx" id="mood-set-x" src="img/close.png" alt="">
-      <h2>Daily Mood</h2>
-      <p>Track how you feel and get a report at the end of every week (or 7 day cycle).</p>
-      <span class="modal-warn">you can only set your mood once a day</span>
-      <h2>How are you feeling today?</h2>
-      <div class="but-box">
-        <div id="happy" class="mood-but">happy</div>
-        <div id="sad" class="mood-but">sad</div>
-        <div id="mad" class="mood-but">mad</div>
-        <div id="anxious" class="mood-but">anxious</div>
-      </div>
-    </div>
-
-    <div class="modal-win" id="mood-resume-win">
-      <img class="modalx" id="mood-resume-x" src="img/close.png" alt="">
-      <h2>Weekly Mood Resume</h2>
-      <p>This is your weekly mood resume. Since the last time I checked, you have felt:</p>
-
-      <div id="mood-box">
-        <div class="mood-otd"><img class="md-img" id="md1img" ><span id="md1"></span></div>
-        <div class="mood-otd"><img class="md-img" id="md2img" ><span id="md2"></span></div>
-        <div class="mood-otd"><img class="md-img" id="md3img" ><span id="md3"></span></div>
-        <div class="mood-otd"><img class="md-img" id="md4img" ><span id="md4"></span></div>
-        <div class="mood-otd"><img class="md-img" id="md5img" ><span id="md5"></span></div>
-        <div class="mood-otd"><img class="md-img" id="md6img" ><span id="md6"></span></div>
-        <div class="mood-otd"><img class="md-img" id="md7img" ><span id="md7"></span></div>
-      </div>
-
-      <h3>Insights</h3>
-      <p>It seems that you felt mostly <b><span id="week-mood"></span></b> in the last 7 days. <span id="week-rec"></span>  </p>
-    </div>
-
-    <div class="modal-win" id="time-set-win">
-      <img class="modalx" id="time-set-x" src="img/close.png" alt="">
-      <h2>Overwork Timer</h2>
-      <p>Overworking and overstressing yourself can be extremelly harmful to your health, so please, make sure you are taking frequent breaks from whatever you are doing, to assure an healthy work ethic.</p>
-      <span class="modal-warn">setting a new timer will erase the previous one</span>
-      <h2>Set Timer</h2>
-      <div id="halfh" class="timer-but">every 30 minutes</div>
-      <div id="oneh" class="timer-but">every hour</div>
-      <div id="twoh" class="timer-but">each 2 hours</div>
-    </div>
-
-    <div class="modal-win" id="task-set-win">
-      <img class="modalx" id="task-set-x" src="img/close.png" alt="">
-      <h2>Task Manager</h2>
-      <p>Manage and organize what you have to do.</p>
-      <span id='task-error' class="modal-warn">you can't add an empty task.</span>
-      <input id="task-typer" type="text" maxlength="20"/>
-      <div id="task-add">Add</div>
-      <span id="tae">or press enter</span>
-    </div>
-
-    <div class="modal-win" id="mystats">
-      <img class="modalx"  id="statx" src="img/close.png" alt="">
-      <h2>My stats</h2>
-      <img src="img/line.png" alt="">
-      <br>
-      <h3>to achieve:</h3>
-      <span id="user-goal"></span>
-
-      <h3>to overcome:</h3>
-      <span id="user-struggle"></span>
-
-      <h3>how I ususally feel:</h3>
-      <span id="user-mood"></span>
-      <h5>developed by <a target="_blank" href="https://www.ricardoinacio.pt">Ricardo Inácio</a></h5>
-      <h6>check this app's page on <a>itch.io</a></h6>
-    </div>
-
-    <img id="me" src="img/me.png" alt="" loading="lazy">
   </div>
-  <script src="./renderer.js"></script>
-  <script src="node_modules/aos/dist/aos.js"></script>
+</div>
+
+<div id="botplace">
+
+</div>
+<!-- modal menus -->
+<div class="modal-win" id="mood-set-win">
+  <img class="modalx" id="mood-set-x" src="img/close.png" alt="">
+  <h2>Daily Mood</h2>
+  <p>Track how you feel and get a report at the end of every week (or 7 day cycle).</p>
+  <span class="modal-warn">you can only set your mood once a day</span>
+  <h2>How are you feeling today?</h2>
+  <div class="but-box">
+    <div id="happy" class="mood-but">happy</div>
+    <div id="sad" class="mood-but">sad</div>
+    <div id="mad" class="mood-but">mad</div>
+    <div id="anxious" class="mood-but">anxious</div>
+  </div>
+</div>
+
+<div class="modal-win" id="mood-resume-win">
+  <img class="modalx" id="mood-resume-x" src="img/close.png" alt="">
+  <h2>Weekly Mood Resume</h2>
+  <p>This is your weekly mood resume. Since the last time I checked, you have felt:</p>
+
+  <div id="mood-box">
+    <div class="mood-otd"><img class="md-img" id="md1img" ><span id="md1"></span></div>
+    <div class="mood-otd"><img class="md-img" id="md2img" ><span id="md2"></span></div>
+    <div class="mood-otd"><img class="md-img" id="md3img" ><span id="md3"></span></div>
+    <div class="mood-otd"><img class="md-img" id="md4img" ><span id="md4"></span></div>
+    <div class="mood-otd"><img class="md-img" id="md5img" ><span id="md5"></span></div>
+    <div class="mood-otd"><img class="md-img" id="md6img" ><span id="md6"></span></div>
+    <div class="mood-otd"><img class="md-img" id="md7img" ><span id="md7"></span></div>
+  </div>
+
+  <h3>Insights</h3>
+  <p>It seems that you felt mostly <b><span id="week-mood"></span></b> in the last 7 days. <span id="week-rec"></span>  </p>
+</div>
+
+<div class="modal-win" id="time-set-win">
+  <img class="modalx" id="time-set-x" src="img/close.png" alt="">
+  <h2>Overwork Timer</h2>
+  <p>Overworking and overstressing yourself can be extremelly harmful to your health, so please, make sure you are taking frequent breaks from whatever you are doing, to assure an healthy work ethic.</p>
+  <span class="modal-warn">setting a new timer will erase the previous one</span>
+  <h2>Set Timer</h2>
+  <div id="halfh" class="timer-but">every 30 minutes</div>
+  <div id="oneh" class="timer-but">every hour</div>
+  <div id="twoh" class="timer-but">each 2 hours</div>
+</div>
+
+<div class="modal-win" id="task-set-win">
+  <img class="modalx" id="task-set-x" src="img/close.png" alt="">
+  <h2>Task Manager</h2>
+  <p>Manage and organize what you have to do.</p>
+  <span id='task-error' class="modal-warn">you can't add an empty task.</span>
+  <input id="task-typer" type="text" maxlength="20"/>
+  <div id="task-add">Add</div>
+  <span id="tae">or press enter</span>
+</div>
+
+<div class="modal-win" id="sleep-set-win">
+  <img class="modalx" id="sleep-set-x" src="img/close.png" alt="">
+  <h2>Sleep Scheduler</h2>
+  <p>Manage and regulate your sleep.</p>
+  <input id="sleep-selecter" type="time" />
+  <span id='sleepSpan' ></span>
+  <div id="sleep-add">Select</div>
+</div>
+
+<div class="modal-win" id="mystats">
+  <img class="modalx"  id="statx" src="img/close.png" alt="">
+  <h2>My stats</h2>
+  <img src="img/line.png" alt="">
+  <br>
+  <h3>to achieve:</h3>
+  <span id="user-goal"></span>
+
+  <h3>to overcome:</h3>
+  <span id="user-struggle"></span>
+
+  <h3>how I ususally feel:</h3>
+  <span id="user-mood"></span>
+  <h5>developed by <a target="_blank" href="https://www.ricardoinacio.pt">Ricardo Inácio</a></h5>
+  <h6>check this app's page on <a>itch.io</a></h6>
+</div>
+
+<img id="me" src="img/me.png" alt="" loading="lazy">
+</div>
+<script src="./renderer.js"></script>
+<script src="node_modules/aos/dist/aos.js"></script>
 </body>
 </html>
