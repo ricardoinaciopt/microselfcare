@@ -1,9 +1,9 @@
-const {app, BrowserWindow, ipcMain, shell} = require('electron')
+const { app, BrowserWindow, ipcMain, shell } = require('electron')
 const path = require('path')
 const isDev = require('electron-is-dev')
 const Store = require('electron-store')
 
-function createWindow () {
+function createWindow() {
   const mainWindow = new BrowserWindow({
     show: false,
     width: 800,
@@ -25,9 +25,9 @@ function createWindow () {
     }
   })
 
-  if(isDev){
+  if (isDev) {
     mainWindow.webContents.openDevTools()
-  }else{
+  } else {
     mainWindow.removeMenu()
   }
 
@@ -50,17 +50,17 @@ function createWindow () {
 
   //ipcMain events
   ipcMain.on('max', () => {
-    if(!mainWindow.isMaximized()){
+    if (!mainWindow.isMaximized()) {
       mainWindow.maximize()
-    }else{
+    } else {
       mainWindow.unmaximize()
     }
   })
 
   ipcMain.on('min', () => {
-    if(!mainWindow.isMinimized()){
+    if (!mainWindow.isMinimized()) {
       mainWindow.minimize()
-    }else{
+    } else {
       mainWindow.unminimize()
     }
   })
@@ -83,12 +83,12 @@ function createWindow () {
 
 app.whenReady().then(() => {
   createWindow()
-  app.on('activate', function () {
+  app.on('activate', function() {
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
   })
 })
 
-app.on('window-all-closed', function () {
+app.on('window-all-closed', function() {
   if (process.platform !== 'darwin') app.quit()
 })
 

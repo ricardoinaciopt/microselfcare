@@ -95,7 +95,8 @@ h5{
 }
 
 h6{
-  margin-top: 0;
+  margin-top: 10px;
+  margin-bottom: 0;
 }
 
 a{
@@ -190,7 +191,7 @@ a:hover{
 }
 
 #intro-content2{
-  width: 800px;
+  width: 750px;
   margin: auto;
   position: absolute;
   top:0;
@@ -288,6 +289,25 @@ display: none;
   position: absolute;
   left: 265px;
   top: 5px;
+}
+
+#addict-box{
+  display: flex;
+  flex-flow: row;
+  width: 100%;
+  height: 60px;
+  justify-content: center;
+}
+
+.addict-boxes{
+  width: 100px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  background-color: #232526;
+  color: white;
+  margin: 10px;
+  border-radius: 3px;
 }
 
 .mainboxes{

@@ -1,6 +1,6 @@
 {
   "name": "microselfcare",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "the app that cares about you",
   "repository": "https://github.com/ricardoinaciopt/microselfcare",
   "main": "main.js",
@@ -8,11 +8,11 @@
     "forge": "forge.config.js"
   },
   "scripts": {
-    "start": "electron-forge start",
+    "start": "electron-forge start ",
     "package": "electron-forge package",
     "make": "electron-forge make",
-    "build_osx": "electron-packager . miniselfcare --platform=darwin --arch=x64  --prune=true --out=release-builds --overwrite --icon=icon.icns",
-    "build_linux": "electron-packager . minislefcare --platform=linux  --arch=x64 --out ~/Documents/ --overwrite --icon=icon.ico"
+    "build_osx": "electron-packager . microselfcare --platform=darwin --arch=x64  --prune=true --out=release-builds --overwrite --icon=icon.icns",
+    "build_linux": "electron-packager . microselfcare --platform=linux  --arch=x64 --out ~/Documents/ --overwrite --icon=icon.ico"
   },
   "keywords": [
     "self-care",
@@ -30,6 +30,7 @@
     "@electron-forge/maker-rpm": "^6.0.0-beta.60",
     "@electron-forge/maker-squirrel": "^6.0.0-beta.60",
     "@electron-forge/maker-zip": "^6.0.0-beta.60",
+    "@types/aos": "^3.0.4",
     "aos": "^2.3.4",
     "electron": "^14.0.0",
     "electron-packager": "^15.3.0"
