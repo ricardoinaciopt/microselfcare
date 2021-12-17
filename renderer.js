@@ -83,8 +83,8 @@ if (document.querySelector('#timeofday')) {
     case 'addiction':
       document.getElementById("user-goal").textContent = "quit an addiction.";
       break;
-    case 'finnish':
-      document.getElementById("user-goal").textContent = "finnish a project.";
+    case 'mindfullness':
+      document.getElementById("user-goal").textContent = "achieve mindfullness.";
       break;
   }
 
@@ -751,30 +751,32 @@ if (document.querySelector('#timeofday')) {
 }
 
 //sleep
-var sleeptime;
-document.querySelector('#sleep-set').addEventListener('click', () => {
-  document.getElementById("sleep-set-win").style.visibility = 'visible';
-  document.getElementById("sleeph5").style.visibility = 'visible';
-  document.getElementById("overlay").style.visibility = 'visible';
-  document.body.classList.add("stop-scrolling");
-  document.body.classList.remove("start-scrolling");
-  document.querySelector('#sleep-add').addEventListener('click', () => {
-    sleeptime = document.getElementById("sleep-selecter").value;
-    store.set("sleep.time", sleeptime);
-    document.querySelector('#sleepSpan').textContent = "Time Chosen."
-    document.querySelector('#sleeph5').style.visibility = 'visible';
-    document.querySelector('#sleepShow').textContent = sleeptime
+if (document.querySelector('#sleep-set')) {
+  var sleeptime;
+  document.querySelector('#sleep-set').addEventListener('click', () => {
+    document.getElementById("sleep-set-win").style.visibility = 'visible';
+    document.getElementById("sleeph5").style.visibility = 'visible';
+    document.getElementById("overlay").style.visibility = 'visible';
+    document.body.classList.add("stop-scrolling");
+    document.body.classList.remove("start-scrolling");
+    document.querySelector('#sleep-add').addEventListener('click', () => {
+      sleeptime = document.getElementById("sleep-selecter").value;
+      store.set("sleep.time", sleeptime);
+      document.querySelector('#sleepSpan').textContent = "Time Chosen."
+      document.querySelector('#sleeph5').style.visibility = 'visible';
+      document.querySelector('#sleepShow').textContent = sleeptime
 
+    });
+
+    document.querySelector('#sleep-set-x').addEventListener('click', () => {
+      document.getElementById("sleep-set-win").style.visibility = 'hidden';
+      document.getElementById("overlay").style.visibility = 'hidden';
+      document.querySelector('#sleepSpan').textContent = ""
+      document.body.classList.remove("stop-scrolling");
+      document.body.classList.add("start-scrolling");
+    })
   });
-
-  document.querySelector('#sleep-set-x').addEventListener('click', () => {
-    document.getElementById("sleep-set-win").style.visibility = 'hidden';
-    document.getElementById("overlay").style.visibility = 'hidden';
-    document.querySelector('#sleepSpan').textContent = ""
-    document.body.classList.remove("stop-scrolling");
-    document.body.classList.add("start-scrolling");
-  })
-});
+}
 
 if (store.has("sleep.time")) {
   document.getElementById("sleeph5").style.visibility = 'visible';
@@ -797,6 +799,47 @@ function checkSleep() {
   requestAnimationFrame(checkSleep);
 }
 
+//meditate
+var seconds = 6, stop = 0, counterStarted = false, counter;
+function onemin() {
+  if (counterStarted == false) {
+    counterStarted = true;
+    counter = setInterval(function() {
+      if (seconds >= stop) {
+        document.getElementById('mindcounter').textContent = seconds;
+        seconds--;
+      } else {
+        document.getElementById('mindcounter').setAttribute("disabled", "disabled");
+        clearInterval(counter);
+        counterStarted = false;
+        seconds = 60;
+      }
+    }, 1000)
+  }
+}
+
+if (document.querySelector('#mindfullness-mainboxes')) {
+  document.querySelector('#start-mind').addEventListener('click', () => {
+    document.getElementById("mind-set-win").style.visibility = 'visible';
+    document.getElementById("overlay").style.visibility = 'visible';
+    document.body.classList.add("stop-scrolling");
+    document.body.classList.remove("start-scrolling");
+    document.querySelector('#mind-add').addEventListener('click', () => {
+      onemin();
+    });
+
+    document.querySelector('#mind-set-x').addEventListener('click', () => {
+      document.getElementById("mind-set-win").style.visibility = 'hidden';
+      document.getElementById("overlay").style.visibility = 'hidden';
+      document.querySelector('#mindcounter').textContent = ""
+      document.body.classList.remove("stop-scrolling");
+      document.body.classList.add("start-scrolling");
+    })
+  });
+}
+
+
+
 //exclusive
 switch (store.get("goal")) {
   case "addiction":
@@ -807,7 +850,9 @@ switch (store.get("goal")) {
     break;
   case "sleep":
     document.querySelector('#sleep-mainboxes').style.display = "initial";
-
+    break;
+  case "mindfullness":
+    document.querySelector('#mindfullness-mainboxes').style.display = "initial";
     break;
 }
 
@@ -827,7 +872,7 @@ if (document.querySelector('#button')) {
 
 let moods = ["happy", "sad", "anxious", "mad"];
 let struggles = ["time", "done", "care"];
-let goals = ["sleep", "addiction", "finnish"];
+let goals = ["sleep", "addiction", "mindfullness"];
 var user_mood, user_struggle, user_goal
 function removeSelect(arr) {
   arr.forEach(item => {
@@ -895,7 +940,7 @@ if (document.querySelector('#intro-content2')) {
     user_goal = goals[1];
   })
 
-  document.querySelector('#finnish').addEventListener('click', () => {
+  document.querySelector('#mindfullness').addEventListener('click', () => {
     addSelect(goals, 2);
     user_goal = goals[2];
   })

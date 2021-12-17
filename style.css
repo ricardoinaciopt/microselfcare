@@ -310,11 +310,11 @@ input[type=time]::-webkit-datetime-edit-fields-wrapper {
 }
 
 
-#addiction-mainboxes, #sleep-mainboxes{
+#addiction-mainboxes, #sleep-mainboxes, #mindfullness-mainboxes{
   display: none;
 }
 
-#addict-box{
+#addict-box, #mind-box{
   display: flex;
   flex-flow: row;
   width: 100%;
@@ -322,7 +322,7 @@ input[type=time]::-webkit-datetime-edit-fields-wrapper {
   justify-content: center;
 }
 
-.addict-boxes{
+.addict-boxes, .mind-boxes{
   width: 100px;
   height: 30px;
   line-height: 30px;
