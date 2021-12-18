@@ -22,6 +22,7 @@
     <div data-aos="fade-up" data-aos-duration="2000" id="mainplace">
       <div class="mainboxes">
         <h2>Daily Mood</h2>
+        <img id="rec-mood" src="img/recc.png" class="hide rec" alt="">
         <p>As you told me, you usually feel <b><span id="mymood"></span></b>.<br /> Let's track your daily mood to see how you improve over time.</p>
         <img class="mainboxes-ico" id="moodicon">
         <img class="mainboxes-ico" id="moodicon2">
@@ -30,6 +31,7 @@
         <span id="available">Weekly Mood Resume Available!</span>
       </div>
       <div class="mainboxes">
+        <img id="rec-time" src="img/recc.png" class="hide rec" alt="">
         <h2>Overwork Timer</h2>
         <p>Make sure you are not overworking yourself.</p>
         <b><span id="current-timer"></span></b>
@@ -38,13 +40,14 @@
       </div>
       <!--tasks-->
       <div class="mainboxes">
+
         <img class="set" id="task-set" src="img/add.png">
         <h2>My Tasks</h2>
         <p>Get things done, in time.</p>
         <audio id="chk" src="sfx/chk.mp3" preload="auto"></audio>
         <div id="task-container-none">There aren't any active tasks as of right now.</div>
-        <div id="task-container">
-        </div>
+        <div id="task-container"></div>
+          <img id="rec-task" class="hide" src="img/recc.png"  alt="">
       </div>
       <!--addiction-->
       <div id="addiction-mainboxes" class="mainboxes">
@@ -152,11 +155,11 @@
 <div class="modal-win" id="mind-set-win">
   <img class="modalx" id="mind-set-x" src="img/close.png" alt="">
   <h2>Relax for a Minute</h2>
-  <p>One Minute, we won't ask for more, so just sit back and relax with us.</p>
-  <div id="mindcounter">
-
-  </div>
-  <div id="mind-add">Select</div>
+  <p>One Minute, we won't ask for more. Start by taking a deep breath, and sync your breathing cycles with the image.</p>
+  <div id="mindcounter"></div>
+  <img id="mindgif" class="hide" src="img/mind.gif" alt="">
+  <span class="hide" id="mindfin">Excelent Work</span>
+  <div id="mind-add">Begin</div>
 </div>
 
 <div class="modal-win" id="mystats">
@@ -174,6 +177,17 @@
   <span id="user-mood"></span>
   <h5>developed by <a target="_blank" href="https://www.ricardoinacio.pt">Ricardo Inácio</a></h5>
   <h6>check this app's page on <a>itch.io</a></h6>
+
+  <div id="resetBut">Reset Profile</div>
+</div>
+
+<div class="modal-win" id="reset">
+  <img class="modalx"  id="resetx" src="img/close.png" alt="">
+  <h2>RESET PROFILE</h2>
+
+  <h3>Are you sure you want to reset the profile? Everything you've told me will be forgotten...</h3>
+  <h4>Reset?</h4>
+  <div id="resetYes">Confirm</div>
 </div>
 
 <img id="me" src="img/me.png" alt="" loading="lazy">

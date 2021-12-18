@@ -9,6 +9,10 @@
   src: url('fonts/LibreBaskerville-Regular.ttf');
 }
 
+.hide {
+  opacity: 0 !important;
+}
+
 body,html{
   margin: 0;
   padding: 0;
@@ -106,6 +110,20 @@ a{
 
 a:hover{
   text-decoration: underline;
+}
+
+.rec{
+  width: 95px;
+  position: absolute;
+  top: -30px;
+  right: -30px;
+}
+
+#rec-task{
+  width: 95px;
+  position: absolute;
+  bottom: -30px;
+  left: -30px;
 }
 
 /*containers*/
@@ -218,12 +236,11 @@ a:hover{
 #botplace{
   width: 750px;
   margin: auto;
-  margin-top: 650px;
+  margin-top: 350px;
   margin-bottom: 50px;
   height: 200px;
   border-radius: 3px;
-  color: #232526;
-  background: #d3d3d3;
+
   opacity: 0.9;
   position: relative;
 }
@@ -333,7 +350,46 @@ input[type=time]::-webkit-datetime-edit-fields-wrapper {
   border-radius: 3px;
 }
 
+#mindcounter{
+  height: 40px;
+  font-size: 32px;
+  transition: opacity 3s;
+}
 
+#mindfin{
+  transition: opacity 3s;
+  height: 40px;
+  font-size: 26px;
+  position: absolute;
+  top: 190px;
+}
+
+#mindgif{
+  width: 160px;
+  opacity: 0.8;
+  filter: blur(2.5px);
+  transition: transform 7s, opacity 3s;
+}
+
+.zoomin {
+  transform: scale(1);
+}
+
+.zoomout {
+  transform: scale(0.5);
+}
+
+#mind-add{
+  background-color: #232526;
+  color: white;
+  box-shadow: 0px 0px 14px 3px rgba(35,37,38,0.66);
+  width: 100px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 4px;
+  position: absolute;
+  bottom: 16px;
+}
 
 .mainboxes{
   position: relative;
@@ -698,6 +754,19 @@ input[type=time]::-webkit-datetime-edit-fields-wrapper {
   margin: 0 auto;
   margin-top: 150px;
   margin-bottom: 50px;
+}
+
+#resetBut, #resetYes{
+  width: 200px;
+  height: 35px;
+  line-height: 35px;
+  font-size: 18px;
+  border-radius: 3px;
+  background: #851e29 ;
+  cursor: grab;
+  text-align: center;
+  color: #d3d3d3;
+  margin-top: 15px;
 }
 
 #tae{

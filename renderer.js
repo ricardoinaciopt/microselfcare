@@ -180,6 +180,23 @@ if (document.querySelector('#timeofday')) {
     document.body.classList.add("start-scrolling");
   })
 
+  document.querySelector('#resetBut').addEventListener('click', () => {
+    document.getElementById("reset").style.visibility = 'visible';
+    document.querySelector('#resetYes').addEventListener('click', () => {
+      store.clear();
+      window.location.assign("intro.html")
+
+    })
+  })
+
+  document.querySelector('#resetx').addEventListener('click', () => {
+    document.getElementById("reset").style.visibility = 'hidden';
+    document.getElementById("overlay").style.visibility = 'hidden';
+    document.getElementById("mystats").style.visibility = 'hidden';
+    document.body.classList.remove("stop-scrolling");
+    document.body.classList.add("start-scrolling");
+  })
+
   //mood settings window
   var dayn = store.get('dayn');
   var moodtodayFlag = store.get('moodtoday.flag');
@@ -800,19 +817,40 @@ function checkSleep() {
 }
 
 //meditate
-var seconds = 6, stop = 0, counterStarted = false, counter;
+var seconds = 60, stop = 0, counterStarted = false, counter, zoomcount = 0, zoomflag = false;
 function onemin() {
   if (counterStarted == false) {
     counterStarted = true;
+    document.getElementById('mindgif').classList.remove('hide');
     counter = setInterval(function() {
       if (seconds >= stop) {
+        zoomcount++;
+        if (zoomcount == 8) {
+          if (zoomflag == false) {
+            document.getElementById('mindgif').classList.remove('zoomin');
+            document.getElementById('mindgif').classList.add('zoomout');
+            zoomflag = true;
+          } else {
+            document.getElementById('mindgif').classList.remove('zoomout');
+            document.getElementById('mindgif').classList.add('zoomin');
+            zoomflag = false;
+          }
+          zoomcount = 0;
+
+        }
+        document.getElementById('mindcounter').classList.add('hide');
         document.getElementById('mindcounter').textContent = seconds;
         seconds--;
+        document.getElementById('mindcounter').classList.remove('hide');
       } else {
         document.getElementById('mindcounter').setAttribute("disabled", "disabled");
         clearInterval(counter);
         counterStarted = false;
         seconds = 60;
+        zoomcount = 0;
+        document.getElementById('mindcounter').classList.add('hide');
+        document.getElementById('mindgif').classList.add('hide');
+        document.getElementById('mindfin').classList.remove('hide');
       }
     }, 1000)
   }
@@ -825,6 +863,7 @@ if (document.querySelector('#mindfullness-mainboxes')) {
     document.body.classList.add("stop-scrolling");
     document.body.classList.remove("start-scrolling");
     document.querySelector('#mind-add').addEventListener('click', () => {
+      document.getElementById('mindfin').classList.add('hide');
       onemin();
     });
 
@@ -834,6 +873,7 @@ if (document.querySelector('#mindfullness-mainboxes')) {
       document.querySelector('#mindcounter').textContent = ""
       document.body.classList.remove("stop-scrolling");
       document.body.classList.add("start-scrolling");
+      document.getElementById('mindfin').classList.add('hide');
     })
   });
 }
@@ -853,6 +893,27 @@ switch (store.get("goal")) {
     break;
   case "mindfullness":
     document.querySelector('#mindfullness-mainboxes').style.display = "initial";
+    break;
+}
+
+switch (store.get("struggle")) {
+  case "time":
+    if (store.has("recflag") && store.get("recflag") == false) {
+      document.querySelector('#rec-time').classList.remove('hide');
+      store.set("recflag", true);
+    }
+    break;
+  case "done":
+    if (store.has("recflag") && store.get("recflag") == false) {
+      document.querySelector('#rec-task').classList.remove('hide');
+      store.set("recflag", true);
+    }
+    break;
+  case "care":
+    if (store.has("recflag") && store.get("recflag") == false) {
+      document.querySelector('#rec-mood').classList.remove('hide');
+      store.set("recflag", true);
+    }
     break;
 }
 
@@ -948,6 +1009,7 @@ if (document.querySelector('#intro-content2')) {
   document.querySelector('#button2').addEventListener('click', () => {
     store.set('mood', user_mood);
     store.set('struggle', user_struggle);
+    store.set("recflag", false);
     store.set('goal', user_goal);
     ipc.send('userdone');
 

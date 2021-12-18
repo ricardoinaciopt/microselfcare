@@ -10,13 +10,10 @@ module.exports = {
       "config": {
         "name": "microselfcare",
         "iconUrl": "https://raw.githubusercontent.com/ricardoinaciopt/microselfcare/master/icon.ico",
-        "loadingGif": path.join(__dirname,"img/load.gif"),
-        "setupIcon": path.join(__dirname,"icon.ico")
+        "loadingGif": path.join(__dirname, "img/load.gif"),
+        "setupIcon": path.join(__dirname, "icon.ico")
       },
-      "name": "@electron-forge/maker-zip",
-      "platforms": [
-        "darwin, linx, win32"
-      ]
+      "name": "@electron-forge/maker-zip"
     },
     {
       "name": "@electron-forge/maker-deb",
