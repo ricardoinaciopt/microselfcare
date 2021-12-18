@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, shell } = require('electron')
+const { app, globalShortcut, Menu, BrowserWindow, ipcMain, shell } = require('electron')
 const path = require('path')
 const isDev = require('electron-is-dev')
 const Store = require('electron-store')
@@ -82,6 +82,7 @@ function createWindow() {
 
 
 app.whenReady().then(() => {
+  Menu.setApplicationMenu(null)
   createWindow()
   app.on('activate', function() {
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
@@ -91,6 +92,20 @@ app.whenReady().then(() => {
 app.on('window-all-closed', function() {
   if (process.platform !== 'darwin') app.quit()
 })
+
+app.on('browser-window-focus', function() {
+  globalShortcut.register("CommandOrControl+R", () => {
+    console.log("CommandOrControl+R is pressed: Shortcut Disabled");
+  });
+  globalShortcut.register("F5", () => {
+    console.log("F5 is pressed: Shortcut Disabled");
+  });
+});
+
+app.on('browser-window-blur', function() {
+  globalShortcut.unregister('CommandOrControl+R');
+  globalShortcut.unregister('F5');
+});
 
 
 if (require('electron-squirrel-startup')) return app.quit();
