@@ -39,6 +39,6 @@
     "aos": "^2.3.4",
     "electron-is-dev": "^2.0.0",
     "electron-squirrel-startup": "^1.0.0",
-    "electron-store": "^8.0.0"
+    "electron-store": "^8.1.0"
   }
 }
